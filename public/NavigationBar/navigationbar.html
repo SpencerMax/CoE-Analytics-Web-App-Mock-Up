@@ -1,0 +1,77 @@
+<a class="active" href="../index.html">Home</a>
+<a href="../About/About.html"> About Us</a>
+<a href="../TeamMembers/teammembers.html"> TeamMembers</a>
+<a href="../Views/views2.html">View Select</a>
+<a href="../GradRecruiting/gradrecruiting.html">Grad Recruiting</a>
+<a href="../SocialNetworks/socialnetworks.html">Social Referals</a>
+<a href="../NewsCenter/newscenter.html">News Center</a>
+
+<style>
+  .sidebar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #4b2913;
+    overflow-x: hidden;
+    padding-top: 16px;
+  }
+
+  .sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #cfab7a;
+    display: block;
+  }
+
+  .sidebar a:hover {
+    color: #e1da19;
+  }
+  .subnav {
+    float: left;
+    overflow: hidden;
+  }
+
+  .subnav .subnavbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+
+  .navbar a:hover,
+  .subnav:hover .subnavbtn {
+    background-color: red;
+  }
+
+  .subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: red;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .subnav-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+  }
+
+  .subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+  }
+
+  .subnav:hover .subnav-content {
+    display: block;
+  }
+</style>

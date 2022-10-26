@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello Analytics Reporting API V4</title>
+    <meta
+      name="google-signin-client_id"
+      content="181207171362-ggigj9sr2dv8m8ub5ik9hskv3leo7o48.apps.googleusercontent.com"
+    />
+    <meta
+      name="google-signin-scope"
+      content="https://www.googleapis.com/auth/analytics.readonly"
+    />
+    <link rel="stylesheet" href="views.css" />
+  </head>
+  <p class="g-signin2" data-onsuccess="queryReports"></p>
+
+  <body>
+    <nav class = "sidebar">
+
+    </nav>
+    
+    <script src="/script.js"></script>
+    <div class="main">        
+    <script>
+      function setView(id) {
+        document.cookie = "viewSelected=" + id;
+        console.log("view set to " + id);
+      }
+      function setViewName(name) {
+        document.cookie = "viewNameSelected=" + name;
+        console.log("view name set to " + name);
+      }
+
+      function getView() {
+        let name = "viewSelected" + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            //console.log( c.substring(name.length, c.length));
+            return c.substring(name.length, c.length);
+          }
+        }
+        //console.log("Not found");
+        return "251744917";
+      }
+      function getViewName() {
+        let name = "viewNameSelected" + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            //console.log( c.substring(name.length, c.length));
+            return c.substring(name.length, c.length);
+          }
+        }
+        //console.log("Not found");
+        return "Rossin/All";
+      }
+    </script>
+
+
+    <!-- The Sign-in button. This will run `queryReports()` on success. -->
+    <h1>
+      Current View:
+      <script>
+        document.write(getViewName());
+      </script>
+    </h1>
+    <button
+      type="button"
+      onclick="window.location.reload(); setView(251744917); setViewName('Rossin/All');"
+    >
+      Rossin/All
+    </button>
+    <button
+      type="button"
+      onclick="window.location.reload(); setView(252825983); setViewName('Rossin News Center');"
+    >
+      Rossin News Center
+    </button>
+    <button type="button" onclick="window.location.reload(); setView(252797003); setViewName('BioE');">
+      BioE
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252817009); setViewName('CEE')">
+      CEE
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252808810); setViewName('ChBE')">
+      ChBE
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252820330); setViewName('CSE')">
+      CSE
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252793771); setViewName('ECE')">
+      ECE
+    </button>
+    <button
+      type="button"
+      onclick="window.location.reload();setView(252795084); setViewName('Energy Systems')"
+    >
+      Energy Systems
+    </button>
+    <button
+      type="button"
+      onclick="window.location.reload();setView(254096626); setViewName('Graduate Studies')"
+    >
+      Graduate Studies
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252847672); setViewName('HSE')">
+      HSE
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252837195); setViewName('ISE')">
+      ISE
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252790552); setViewName('MatSci')">
+      MatSci
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252807107); setViewName('MechE')">
+      MechE
+    </button>
+    <button
+      type="button"
+      onclick="window.location.reload();setView(256936485); setViewName('Rossin/All External')"
+    >
+      Rossin/All External
+    </button>
+    <button
+      type="button"
+      onclick="window.location.reload();setView(252814596); setViewName('Structures M.Eng')"
+    >
+      Strucutres M.Eng
+    </button>
+    <button type="button" onclick="window.location.reload();setView(252795608); setViewName('TE')">
+      TE
+    </button>
+
+    <!-- Load the JavaScript API client and Sign-in library. -->
+    <script src="https://apis.google.com/js/client:platform.js"></script>
+  </body>
+</html>

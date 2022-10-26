@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello Analytics Reporting API V4</title>
+    <meta
+      name="google-signin-client_id"
+      content="181207171362-ggigj9sr2dv8m8ub5ik9hskv3leo7o48.apps.googleusercontent.com"
+    />
+    <meta
+      name="google-signin-scope"
+      content="https://www.googleapis.com/auth/analytics.readonly"
+    />
+    <p class="g-signin2" data-onsuccess="queryReports" align="right"></p>
+    <!-- <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #111;
+      }
+
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style> -->
+    <link rel="stylesheet" href="other.css">
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="/About/About.html"> About Us</a>
+      <a href="/TeamMembers/About.html"> TeamMembers</a>
+      <a href="/Views/views2.html">View Select</a>
+      <a href="/Users/Users.html">Users</a>
+      <a href="/Campaigns/campaigns.html">Campaigns</a>
+      <a href="/Campaigns/campaign2.html">Campaigns2</a>
+    </div>
+      <div class="main">
+    <h1>Campaign Dashboard</h1>
+    
+
+    <!-- The Sign-in button. This will run `queryReports()` on success. -->
+
+    <!-- The API response will be printed here. -->
+    <textarea cols="80" rows="20" id="query-output"></textarea>
+
+    <script>
+      function getView() {
+        let name = "viewSelected" + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            //console.log( c.substring(name.length, c.length));
+            return c.substring(name.length, c.length);
+          }
+        }
+        //console.log("Not found");
+        return "251744917";
+      }
+      // Replace with your view ID.
+      var VIEW_ID = getView();
+
+      // Query the API and print the results to the page.
+      function queryReports() {
+        gapi.client
+          .request({
+            path: "/v4/reports:batchGet",
+            root: "https://analyticsreporting.googleapis.com/",
+            method: "POST",
+            body: {
+              reportRequests: [
+                {
+                  viewId: VIEW_ID,
+                  dateRanges: [
+                    {
+                      startDate: "7daysAgo",
+                      endDate: "today",
+                    },
+                  ],
+                  metrics: [
+                    {
+                      expression: "ga:users",
+                    },
+                  ],
+                  dimensions: [{ name: "ga:campaign" }],
+                },
+              ],
+            },
+          })
+          .then(displayResults, console.error.bind(console));
+      }
+
+      function displayResults(response) {
+        var formattedJson = JSON.stringify(response.result, null, 2);
+        document.getElementById("query-output").value = formattedJson;
+        document.getElementById("details").innerHTML =
+          response.result["reports"][0]["data"]["maximums"][0]["values"][0]; //Prints the maximum
+      }
+    </script>
+    <!-- Load the JavaScript API client and Sign-in library. -->
+    <script src="https://apis.google.com/js/client:platform.js"></script>
+  </body>
+</html>

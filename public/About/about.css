@@ -1,0 +1,56 @@
+ul {
+  list-style-type: none;
+  width: 40%;
+  margin: 70;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(26, 92, 151);
+}
+
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* when you hover over options color */
+li a:hover {
+  background-color: rgb(191, 193, 201);
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main {
+  margin-left: 160px;
+  /* Same as the width of the sidenav */
+  padding: 0px 10px;
+  /* padding: 10px */
+}
+h1 {
+  color: rgb(24, 43, 150);
+}
+.column {
+  float: left;
+  width: 30%;
+  padding: 10px;
+}
+.column2 {
+  float: left;
+  width: 95%;
+  padding: 0px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+}
+img {
+  width: 128px;
+}
