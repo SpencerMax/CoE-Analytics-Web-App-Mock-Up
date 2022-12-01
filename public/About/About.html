@@ -11,17 +11,18 @@
       name="google-signin-scope"
       content="https://www.googleapis.com/auth/analytics.readonly"
     />
-    <p class="g-signin2" data-onsuccess="queryReports" align="right"></p>
-    <link rel="stylesheet" href="about.css">
+      <link rel="stylesheet" href="about.css">
   </head>
+  <p class="g-signin2" data-onsuccess="queryReports" align="right"></p>
+
   <body>
     <nav class = "sidebar">
 
     </nav>
     
     <script src="/script.js"></script>
-      <div class="main">
-    <h2 style="text-align:center">Project Mission</h2>
+    <div class="main">
+      <h1>Project Mission</h1>
     
     <body>
         <div class="row">
@@ -52,7 +53,42 @@
                   hurdle was cleared the problem was solved.</p>
               </div>
           </div>
-
+          <script>  
+            // Query the API and print the results to the page.
+            function queryReports() {
+              gapi.client
+                .request({
+                  path: "/v4/reports:batchGet",
+                  root: "https://analyticsreporting.googleapis.com/",
+                  method: "POST",
+                  body: {
+                    reportRequests: [
+                      {
+                        viewId: VIEW_ID,
+                        dateRanges: [
+                          {
+                            startDate: "7daysAgo",
+                            endDate: "today",
+                          },
+                        ],
+                        metrics: [
+                          {
+                            expression: "ga:users",
+                          },
+                        ],
+                        dimensions: [
+                          { name: "ga:campaign" },
+                          {'name': 'ga:adContent'}
+                        ],
+                      },
+                    ],
+                  },
+                })
+                .then(displayResults, console.error.bind(console));
+            }         
+          </script>
+          <script src="https://apis.google.com/js/client:platform.js"></script>
+      </script>
     </body>
     
 </html>

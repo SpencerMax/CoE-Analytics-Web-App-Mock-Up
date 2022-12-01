@@ -22,7 +22,7 @@
     <script src="/script.js"></script>
       
       <div class="main">
-    <h2 style="text-align:center">Our Team</h2>
+    <h1 style="text-align:center">Our Team</h1>
     
     <body>
         <div class="row">
@@ -43,7 +43,7 @@
             <div class="column" style="background-color:#ccc;">
               <h2 style="text-align:center">Spencer Lander</h2>
               <div class="item"> 
-                <img src= "../Pictures/marc_r.jpg"> 
+                <img src= "../Pictures/Spencer_Lander.JPG"> 
                 <p style="text-align:center">Text Text Text Text Text Text</p> 
             </div>
             </div>
@@ -57,12 +57,47 @@
               <div class="column" style="background-color:#ccc;">
                 <h2 style="text-align:center">Nnamdi Chima-Anyanka</h2>
                 <div class="item"> 
-                    <img src= "../Pictures/marc_r.jpg"> 
+                    <img src= "../Pictures/n_chimaanyanka.jpg"> 
                     <p style="text-align:center">Text Text Text Text Text Text</p> 
                 </div>
               </div>
           </div>
-
+          <script>
+            // Query the API and print the results to the page.
+            function queryReports() {
+              gapi.client
+                .request({
+                  path: "/v4/reports:batchGet",
+                  root: "https://analyticsreporting.googleapis.com/",
+                  method: "POST",
+                  body: {
+                    reportRequests: [
+                      {
+                        viewId: VIEW_ID,
+                        dateRanges: [
+                          {
+                            startDate: "7daysAgo",
+                            endDate: "today",
+                          },
+                        ],
+                        metrics: [
+                          {
+                            expression: "ga:users",
+                          },
+                        ],
+                        dimensions: [
+                          { name: "ga:campaign" },
+                          {'name': 'ga:adContent'}
+                        ],
+                      },
+                    ],
+                  },
+                })
+                .then(displayResults, console.error.bind(console));
+            }         
+          </script>
+          <script src="https://apis.google.com/js/client:platform.js"></script>
+      </script>
     </body>
     
 </html>

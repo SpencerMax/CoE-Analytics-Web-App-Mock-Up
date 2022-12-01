@@ -5,13 +5,28 @@ img {
 }
 .main {
   margin-left: 90px;
-  margin-top: 110px;
+  margin-top: 90px;
   /* Same as the width of the sidenav */
-  padding: 0px 10px;
+  padding: 0;
   /* padding: 10px */
 }
 h1 {
   color: rgb(24, 43, 150);
+}
+.column {
+  float: left;
+  width: 30%;
+  padding: 0px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+}
+img {
+  width: 128px;
+  height: 142px;
 }
 body {
   background-color: #CFAB7A;

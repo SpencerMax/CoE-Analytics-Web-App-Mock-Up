@@ -1,14 +1,48 @@
-<a class="active" href="../index.html">Home</a>
-<a href="../About/About.html"> About Us</a>
-<a href="../TeamMembers/teammembers.html"> TeamMembers</a>
-<a href="../Views/views2.html">View Select</a>
-<a href="../GradRecruiting/gradrecruiting.html">Grad Recruiting</a>
-<a href="../SocialNetworks/socialnetworks.html">Social Referals</a>
-<a href="../NewsCenter/newscenter.html">News Center</a>
-
+<div class="subnav">
+  <button class="subnavbtn">Home</button>
+  <div class="subnav-content">
+    <a class="active" href="../index.html">Home</a>
+  </div>
+</div>
+<div class="subnav">
+  <button class="subnavbtn">About</button>
+  <div class="subnav-content">
+    <a class="active" href="../About/About.html"> About Us</a>
+    <a class="active" href="../About/teammembers.html"> TeamMembers</a>
+  </div>
+</div>
+<div class="subnav">
+  <button class="subnavbtn">Grad Recruiting</button>
+  <div class="subnav-content">
+    <a class="active" href="../GradRecruiting/gradrecruiting.html"
+      >Grad Recruiting</a>
+  </div>
+</div>
+<div class="subnav">
+  <button class="subnavbtn">Social Referrals</button>
+  <div class="subnav-content">
+    <a class="active" href="../SocialNetworks/socialnetworks.html"
+      >Social Referals</a
+    >
+  </div>
+</div>
+<div class="subnav">
+  <button class="subnavbtn">News Center</button>
+  <div class="subnav-content">
+    <a class="active" href="../NewsCenter/newscenter.html">News Center</a>
+  </div>
+</div>
 <style>
   .sidebar {
-    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #653600;
+    float: left;
+    top: 0;
+    left: 0;
+
+    /* height: 100%;
     width: 160px;
     position: fixed;
     z-index: 1;
@@ -16,48 +50,51 @@
     left: 0;
     background-color: #4b2913;
     overflow-x: hidden;
-    padding-top: 16px;
+    padding-top: 16px; */
   }
 
   .sidebar a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 20px;
-    color: #cfab7a;
+    font-size: 18px;
+    color: #ffd24f;
     display: block;
   }
 
-  .sidebar a:hover {
-    color: #e1da19;
-  }
   .subnav {
+    padding: 0;
+    margin: 0;
     float: left;
     overflow: hidden;
+    background-color: #653600;
+    /* display: block; */
   }
 
   .subnav .subnavbtn {
-    font-size: 16px;
-    border: none;
+    font-size: 18px;
+    border: None;
     outline: none;
     color: white;
     padding: 14px 16px;
-    background-color: inherit;
+    background-color: #653600;
     font-family: inherit;
     margin: 0;
   }
 
   .navbar a:hover,
   .subnav:hover .subnavbtn {
-    background-color: red;
+    background-color: #653600;
   }
 
   .subnav-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    background-color: red;
     width: 100%;
-    z-index: 1;
+    padding: 0;
+    margin: 0;
+    display: none;
+    position: left;
+    /* left: 0; */
+    background-color: #653600;
+    z-index: -1;
   }
 
   .subnav-content a {
@@ -74,4 +111,3 @@
   .subnav:hover .subnav-content {
     display: block;
   }
-</style>
